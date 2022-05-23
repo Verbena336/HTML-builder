@@ -17,7 +17,7 @@ async function copyFolder(fromFolder, toFolder) {
           });
         } else if(file.isDirectory()) {
           try {
-            copyFolder(path.join(fromFolder, file.name), path.join(toFolder, file.name));
+            copyFolder(path.resolve(fromFolder, file.name), path.resolve(toFolder, file.name));
           } catch(err) {
             console.log(err.message);
           }
@@ -28,7 +28,7 @@ async function copyFolder(fromFolder, toFolder) {
 }
 
 try {
-  copyFolder(path.join(__dirname, 'files'), path.join(__dirname, 'files-copy'));
+  copyFolder(path.resolve(__dirname, 'files'), path.resolve(__dirname, 'files-copy'));
 } catch(err) {
   console.log(err.message);
 }
